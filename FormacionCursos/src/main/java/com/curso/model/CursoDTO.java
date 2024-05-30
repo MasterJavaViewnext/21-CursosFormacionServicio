@@ -2,27 +2,27 @@ package com.curso.model;
 
 import java.util.Objects;
 
-public class Curso{
+public class CursoDTO{
 	private Integer codCurso;
 	private String nombre;
 	private Integer duracion;
 	private Double precio;
 	
-	public Curso() {
+	public CursoDTO() {
 		
 	}
 	
-	public Curso(Integer codCurso) {
+	public CursoDTO(Integer codCurso) {
 		this.codCurso = codCurso;
 	}
 
-	public Curso(String nombre, Integer duracion, Double precio) {
+	public CursoDTO(String nombre, Integer duracion, Double precio) {
 		this.nombre = nombre;
 		this.duracion = duracion;
 		this.precio = precio;
 	}
 
-	public Curso(Integer codCurso, String nombre, Integer duracion, Double precio) {
+	public CursoDTO(Integer codCurso, String nombre, Integer duracion, Double precio) {
 		this.codCurso = codCurso;
 		this.nombre = nombre;
 		this.duracion = duracion;
@@ -75,7 +75,7 @@ public class Curso{
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Curso other = (Curso) obj;
+		CursoDTO other = (CursoDTO) obj;
 		return Objects.equals(nombre, other.nombre);
 	}
 

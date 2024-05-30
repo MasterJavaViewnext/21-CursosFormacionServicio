@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import com.curso.model.Curso;
+import com.curso.model.CursoDTO;
 import com.curso.model.Formacion;
 
 @Service
@@ -24,7 +24,7 @@ public class FormacionServiceImpl implements FormacionService {
 	 */
 	@Override
 	public List<Formacion> findAll() {
-		return Arrays.asList(template.getForObject(URL, Curso[].class))
+		return Arrays.asList(template.getForObject(URL, CursoDTO[].class))
 		.stream().map(c -> new Formacion(c.getNombre(), c.getDuracion(), c.getPrecio()))
 		.toList();
 	}
@@ -36,9 +36,9 @@ public class FormacionServiceImpl implements FormacionService {
 	 */
 	@Override
 	public void insert(Formacion formacion) {
-		Curso curso = template.getForObject(URL + "/nombre/" + formacion.getCurso(), Curso.class);
+		CursoDTO curso = template.getForObject(URL + "/nombre/" + formacion.getCurso(), CursoDTO.class);
 		if (curso == null) {
-			curso = new Curso(formacion.getCurso(), formacion.getAsignaturas()*10, formacion.getPrecio());
+			curso = new CursoDTO(formacion.getCurso(), formacion.getAsignaturas()*10, formacion.getPrecio());
 			template.postForLocation(URL, curso);
 		}
 	}

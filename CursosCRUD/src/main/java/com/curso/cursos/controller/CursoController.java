@@ -54,12 +54,12 @@ public class CursoController {
 		service.delete(codigo);
 	}
 	
-	@PutMapping
+	@PutMapping//cursos?codigo=x&duracion=x
 	public void updateDuracion(@RequestParam("codigo") Integer codigo, @RequestParam("duracion") Integer duracion) {
 		service.updateDuracion(codigo, duracion);
 	}
 	
-	@GetMapping(value = "precio", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "precio", produces = MediaType.APPLICATION_JSON_VALUE)//cursos/precio?min=x&max=x
 	public List<Curso> findByPrecioBetween(@RequestParam("min") Integer min, @RequestParam("max") Integer max){
 		return service.findByPrecioBetween(min, max);
 	}
